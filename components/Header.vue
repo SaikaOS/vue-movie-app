@@ -2,11 +2,11 @@
   <div>
     <div class="slider middle">
       <div class="slides">
-        <input type="radio" name="r" id="r1" checked />
-        <input type="radio" name="r" id="r2" />
-        <input type="radio" name="r" id="r3" />
-        <input type="radio" name="r" id="r4" />
-        <input type="radio" name="r" id="r5" />
+        <input id="r1" type="radio"  name="r" checked />
+        <input id="r2" type="radio"  name="r" />
+        <input id="r3"  type="radio" name="r" />
+        <input id="r4" type="radio"  name="r" />
+        <input id="r5" type="radio"  name="r" />
 
         <div
           v-for="(movie, index) in popularMovies.slice(0, 5)"
@@ -16,7 +16,7 @@
         >
           <nuxt-link
             class="z-50"
-            :to="{ name: 'movies-movieid', params: { id: movie.id } }"
+            :to="{ name: 'movies-movie', params: { id: movie.id } }"
           >
             <img
               :src="`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`"

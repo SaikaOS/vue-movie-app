@@ -4,14 +4,16 @@
     <div class="mx-6 my-12 flex justify-between items-center">
       <div class="flex items-center justify-between w-2/5">
         <input
-          type="text"
           v-model.lazy="searchInput"
-          @keyup.enter="$fetch"
+          type="text"
+          required
           class="rounded-lg p-2 w-96 tracking-wider focus:outline-none focus:border-none"
           placeholder="Search Movies"
-          required
+          @keyup.enter="$fetch"
         />
-        <button @click="clearSearch" :disabled="searchInput === ''">Clear</button>
+        <button :disabled="searchInput === ''" @click="clearSearch">
+          Clear
+        </button>
       </div>
     </div>
     <div>
@@ -26,29 +28,32 @@
           @mouseover="hover = index"
           @mouseleave="hover = null"
         >
-            <nuxt-link class="z-50" :to="{ name: 'movies-movieid', params: { id: movie.id } }">
-              <img
-            :src="`https://image.tmdb.org/t/p/w200/${movie.poster_path}`"
-            alt=""
-            class="rounded-md"
-          />
-          <div
-            v-if="hover === index"
-            class="absolute p-2 bottom-0 divs z-10 h-full flex flex-col justify-between"
+          <nuxt-link
+            class="z-50"
+            :to="{ name: 'movies-movie', params: { id: movie.id } }"
           >
-            <div>
-              <p class="text-white font-bold tracking-wider">
-                {{ movie.title }}
-              </p>
-              <p class="text-white font-bold tracking-wider">
-                {{ movie.release_date.slice(0, 4) }}
+            <img
+              :src="`https://image.tmdb.org/t/p/w200/${movie.poster_path}`"
+              alt=""
+              class="rounded-md"
+            />
+            <div
+              v-if="hover === index"
+              class="absolute p-2 bottom-0 divs z-10 h-full flex flex-col justify-between"
+            >
+              <div>
+                <p class="text-white font-bold tracking-wider">
+                  {{ movie.title }}
+                </p>
+                <p class="text-white font-bold tracking-wider">
+                  {{ movie.release_date.slice(0, 4) }}
+                </p>
+              </div>
+              <p class="text-white text-sm font-bold tracking-wider">
+                {{ movie.overview.slice(0, 100) }}...
               </p>
             </div>
-            <p class="text-white text-sm font-bold tracking-wider">
-              {{ movie.overview.slice(0, 100) }}...
-            </p>
-          </div>
-            </nuxt-link>
+          </nuxt-link>
         </div>
       </div>
       <div v-else>

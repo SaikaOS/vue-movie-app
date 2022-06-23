@@ -9,32 +9,28 @@
         @mouseover="hover = index"
         @mouseleave="hover = null"
       >
-        <nuxt-link :to="{name: 'movies-movieid', path: `/movies/${movie.id}`}">
+        <nuxt-link class="z-50" :to="{ name: 'movies-movie', params: { id: movie.id } }">
           <img
-          :src="`https://image.tmdb.org/t/p/w200/${movie.poster_path}`"
-          alt=""
-          class="rounded-md"
-        />
-        </nuxt-link>
+            :src="`https://image.tmdb.org/t/p/w200/${movie.poster_path}`"
+            alt=""
+            class="rounded-md"
+          />
         <div
           v-if="hover === index"
-          class="absolute p-2 bottom-0 divs z-10 h-full flex flex-col justify-between "
+          class="absolute p-2 bottom-0 divs z-10 h-full flex flex-col justify-between"
         >
           <div>
-            <p class="w-3/4 text-white font-bold tracking-wider relative">{{ movie.title }}</p>
+            <p class="text-white font-bold tracking-wider">{{ movie.title }}</p>
             <p class="text-white font-bold tracking-wider">
               {{ movie.release_date.slice(0, 4) }}
-            </p>
-            <p
-              class="p-2 text-center tracking-wider rounded-full rate absolute top-1 right-1"
-            >
-              {{ movie.vote_average }}
             </p>
           </div>
           <p class="text-white text-sm font-bold tracking-wider">
             {{ movie.overview.slice(0, 100) }}...
           </p>
         </div>
+        </nuxt-link>
+        
       </div>
     </div>
   </div>

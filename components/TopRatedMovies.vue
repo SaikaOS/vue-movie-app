@@ -9,6 +9,7 @@
         @mouseover="hover = index"
         @mouseleave="hover = null"
       >
+       <nuxt-link class="z-50" :to="{ name: 'movies-movie', params: { id: movie.id } }">
         <img
           :src="`https://image.tmdb.org/t/p/w200/${movie.poster_path}`"
           alt=""
@@ -33,6 +34,8 @@
             {{ movie.overview.slice(0, 100) }}...
           </p>
         </div>
+       </nuxt-link>
+        
       </div>
     </div>
   </div>

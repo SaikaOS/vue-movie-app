@@ -9,7 +9,7 @@
         @mouseover="hover = index"
         @mouseleave="hover = null"
       >
-        <nuxt-link class="z-50" :to="{ name: 'movies-movieid', params: { id: movie.id } }">
+        <nuxt-link class="z-50" :to="{ name: 'movies-movie', params: { id: movie.id } }">
           <img
             :src="`https://image.tmdb.org/t/p/w200/${movie.poster_path}`"
             alt=""
