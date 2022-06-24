@@ -1,3 +1,7 @@
+Some content here:
+![image](https://user-images.githubusercontent.com/91471170/175514076-9808e77e-7d9b-4216-be28-354d1b669110.png)
+
+
 # movie-app
 
 ## Build Setup
